@@ -6,7 +6,7 @@ import TextInput from '@/Components/TextInput';
 import SelectInput from '@/Components/SelectInput';
 import TableHeading from '@/Components/TableHeading';
 
-export default function TasksTable({tasks,queryParams = null , hideProjectColumn = false }){ 
+export default function TasksTable({tasks,queryParams = null , hideProjectColumn = false, success}){ 
     queryParams = queryParams || {}; 
 
     const searchFieldChanged = (name,value) => { 
@@ -40,8 +40,18 @@ export default function TasksTable({tasks,queryParams = null , hideProjectColumn
         router.get(route('task.index'), queryParams);
 
     }
+
+    const deleteTask = (task) => { 
+        if(!window.confirm('Are you sure you want to delete the task?')){ 
+            return ; 
+        }
+        router.delete(route('task.destroy', task.id));   
+    }     
     return ( 
         <>
+            {success && <div className='bg-emerald-500 py-2 px-4 text-white rounded mb-4'>
+            {success}
+            </div>}
             <div className="overflow-auto">
                 <table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
                     <thead className='text-xs text-gray-700 uppercase
@@ -94,7 +104,7 @@ export default function TasksTable({tasks,queryParams = null , hideProjectColumn
                             {!hideProjectColumn && <th className='px-3 py-3'></th>}
                             <th className='px-3 py-3'><TextInput className = "w-full" 
                                                                 defaultValue = {queryParams.name}
-                                                                placeholder = "task Name"
+                                                                placeholder = "Task Name"
                                                                 onBlur = {e => searchFieldChanged('name', e.target.value)}
                                                                 onKeyPress = {e => onKeyPress('name', e)} 
                                                                 /></th>
@@ -133,15 +143,17 @@ export default function TasksTable({tasks,queryParams = null , hideProjectColumn
                                     <td className='px-3 py-2 text-nowrap'>{task.created_at}</td>
                                     <td className='px-3 py-2 text-nowrap'>{task.due_date}</td>
                                     <td className='px-3 py-2'>{task.createdBy.name}</td>
-                                    <td className='px-3 py-2'>
+                                    <td className='px-3 py-2 text-nowrap'>
                                         <Link href= {route('task.edit', task.id)}
                                             className='font-medium text-blue-600 dark-text-blue-500 hover:underline mx-1'>
                                                 Edit
                                         </Link>
-                                        <Link href= {route('task.destroy', task.id)}
+                                        <button 
+                                            // href= {route('task.destroy', task.id)}
+                                            onClick={ (e) => deleteTask(task) }
                                             className='font-medium text-red-600 dark-text-red-500 hover:underline mx-1'>
                                                 Delete
-                                        </Link>
+                                        </button>
                                     </td>
                                 </tr>
                             )

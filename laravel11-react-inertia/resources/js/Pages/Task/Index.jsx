@@ -7,7 +7,7 @@ import SelectInput from '@/Components/SelectInput';
 import TableHeading from '@/Components/TableHeading';
 import TasksTable from './TasksTable';
 
-export default function Index({auth, tasks, queryParams = null }){
+export default function Index({auth, tasks, queryParams = null, success}){
     queryParams = queryParams || {}; 
     
 
@@ -15,9 +15,16 @@ export default function Index({auth, tasks, queryParams = null }){
         <AuthenticatedLayout
             user = {auth.user}
             header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-                    tasks
-                </h2>
+                <div className='flex items-center justify-between'>
+                    <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+                    Tasks
+                    </h2>
+                    <Link href={route('task.create')} className='bg-emerald-500 py-1 px-3 text-white rounded shawdow 
+                    transistion-all hover: bg-emerald-600'>
+                        Add New Task
+                    </Link>
+                </div>
+                
             }
         >
             <Head title="tasks" />
@@ -29,6 +36,7 @@ export default function Index({auth, tasks, queryParams = null }){
                         <TasksTable 
                                 tasks={tasks}
                                 queryParams = {queryParams}
+                                success={success}
                                  />
                         </div>
                     </div>

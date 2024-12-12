@@ -135,7 +135,7 @@ export default function Create({auth}){
                                         id = "project_status"
                                         
                                         name = "status"
-                                        value = {data.due_date}
+                                        value = {data.status}
                                         className = "mt-1 block w-full"
                                         onChange = {e => setData('status', e.target.value)}
                                     >
