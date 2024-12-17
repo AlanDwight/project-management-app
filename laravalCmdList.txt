@@ -1,0 +1,41 @@
+composer global require laravel/installer
+laravel new myLaraProject
+php artison serve
+composer require laravel/ui
+ php .\artisan ui bootstrap --auth
+ php .\artisan ui vue  --auth 
+npm install
+npm run dev
+php artison migrate
+php artison tinker
+User::all()
+php artison migrate:fresh
+> $profile = new \App\Models\Profile();
+php artison storage:link
+php artison tinker
+	Post::truncate();
+
+composer require intervention/image
+composer require intervention/image-laravel
+composer dump-autoload
+php artisan config:clear
+php artisan cache:clear
+php .\artisan make:policy ProfilePolicy -m Profile
+php artison migrate:fresh
+php .\artisan make:migration creates_profile_user_pivot_table --create profile_user
+
+$user = User :: find(1); 
+$user->fresh()->following;
+
+$profile = Profile :: find(1);
+$profile->fresh()->followers; 
+php .\artisan make:mail NewUserWelcomeMail -m emails.welcome-email
+
+composer require laravel/breeze --dev
+php artisan breeze:install
+
+php .\artisan make:model Project -fm 
+php .\artisan migrate:refresh --seed #dropping all the tables from the database  
+php .\artisan migrate --seed  #seeding
+
+php .\artisan make:controller ProjectController --requests --resource --model=Project

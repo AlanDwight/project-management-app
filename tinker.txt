@@ -1,0 +1,176 @@
+C:\Users\winky\OneDrive\Documents\laravelTestDir\myLaraProject> php .\artisan tinker 
+Psy Shell v0.12.4 (PHP 8.2.0 — cli) by Justin Hileman
+> $profile = new \App\Profile();
+
+   Error  Class "App\Profile" not found.
+
+> $profile = new \App\Models\Profile();
+= App\Models\Profile {#5233}
+
+> $profile->title = "Cool Title";
+= "Cool Title"
+
+> $profile->description = "description";
+= "description"
+
+> $profile->user_id = 1;
+= 1
+
+> $profile->save();
+= true
+
+> $profile->user
+= App\Models\User {#5245
+    id: 1,
+    name: "TestUser",
+    email: "test@gmail.com",
+    username: "test",
+    email_verified_at: null,
+    #password: "$2y$12$bmZ5EvZBd72PahyDUVz46Ouww1Yffha1eAv8ezfOSEi.7OKBCWGHC",
+    #remember_token: null,
+    created_at: "2024-11-20 08:54:38",
+    updated_at: "2024-11-20 08:54:38",
+  }
+
+> $profile
+= App\Models\Profile {#5233
+    title: "Cool Title",
+    description: "description",
+    user_id: 1,
+    updated_at: "2024-11-20 11:39:42",
+    created_at: "2024-11-20 11:39:42",
+    id: 1,
+    user: App\Models\User {#5245
+      id: 1,
+      name: "TestUser",
+      email: "test@gmail.com",
+      username: "test",
+      email_verified_at: null,
+      #password: "$2y$12$bmZ5EvZBd72PahyDUVz46Ouww1Yffha1eAv8ezfOSEi.7OKBCWGHC",
+      #remember_token: null,
+      created_at: "2024-11-20 08:54:38",
+      updated_at: "2024-11-20 08:54:38",
+    },
+  }
+
+> $user = App\User::find(1);
+
+   Error  Class "App\User" not found.
+
+> $user = App\Models\User::find(1);
+= App\Models\User {#6279
+    id: 1,
+    name: "TestUser",
+    email: "test@gmail.com",
+    username: "test",
+    email_verified_at: null,
+    #password: "$2y$12$bmZ5EvZBd72PahyDUVz46Ouww1Yffha1eAv8ezfOSEi.7OKBCWGHC",
+    #remember_token: null,
+    created_at: "2024-11-20 08:54:38",
+    updated_at: "2024-11-20 08:54:38",
+  }
+
+> $user->profile
+= App\Models\Profile {#6276
+    id: 1,
+    user_id: 1,
+    created_at: "2024-11-20 11:39:42",
+    updated_at: "2024-11-20 11:39:42",
+    title: "Cool Title",
+    description: "description",
+    url: null,
+  }
+
+> $profile-description
+
+   Error  Undefined constant "description".
+
+> $profile->description
+= "description"
+
+> $profile->description = "We're a global community of millions of people learning to code together. We're an open source, donor-supported, 501(c)(3) nonprofit"
+= "We're a global community of millions of people learning to code together. We're an open source, donor-supported, 501(c)(3) nonprofit\x16"       
+
+> $profile->description
+= "We're a global community of millions of people learning to code together. We're an open source, donor-supported, 501(c)(3) nonprofit\x16"
+
+> $profile->description = "We're a global community of millions of people learning to code together. We're an open source, donor-supported, 501(c)(3) nonprofit"
+= "We're a global community of millions of people learning to code together. We're an open source, donor-supported, 501(c)(3) nonprofit\x16"       
+
+> $profile->description
+= "We're a global community of millions of people learning to code together. We're an open source, donor-supported, 501(c)(3) nonprofit\x16"
+
+> $profile->url
+= null
+
+> $profile->url->www.freecodecamp.org
+
+   WARNING  Attempt to read property "www" on null.
+
+
+   Error  Undefined constant "freecodecamp".
+
+> $profile->url = "www.freecodecamp.org";
+= "www.freecodecamp.org"
+
+> $profile->url
+= "www.freecodecamp.org"
+
+> $profile->url
+= "www.freecodecamp.org"
+
+> $profile->save();
+= true
+
+> $profile
+= App\Models\Profile {#5233
+    title: "Cool Title",
+    description: "We're a global community of millions of people learning to code together. We're an open source, donor-supported, 501(c)(3) nonprofit\x16",
+    user_id: 1,
+    updated_at: "2024-11-20 11:50:19",
+    created_at: "2024-11-20 11:39:42",
+    id: 1,
+    url: "www.freecodecamp.org",
+    user: App\Models\User {#5245
+      id: 1,
+      name: "TestUser",
+      email: "test@gmail.com",
+      username: "test",
+      email_verified_at: null,
+      #password: "$2y$12$bmZ5EvZBd72PahyDUVz46Ouww1Yffha1eAv8ezfOSEi.7OKBCWGHC",
+      #remember_token: null,
+      created_at: "2024-11-20 08:54:38",
+      updated_at: "2024-11-20 08:54:38",
+    },
+  }
+
+> $user
+= App\Models\User {#6279
+    id: 1,
+    name: "TestUser",
+    email: "test@gmail.com",
+    username: "test",
+    email_verified_at: null,
+    #password: "$2y$12$bmZ5EvZBd72PahyDUVz46Ouww1Yffha1eAv8ezfOSEi.7OKBCWGHC",
+    #remember_token: null,
+    created_at: "2024-11-20 08:54:38",
+    updated_at: "2024-11-20 08:54:38",
+    profile: App\Models\Profile {#6276
+      id: 1,
+      user_id: 1,
+      created_at: "2024-11-20 11:39:42",
+      updated_at: "2024-11-20 11:39:42",
+      title: "Cool Title",
+      description: "description",
+      url: null,
+    },
+  }
+
+> $user->push();
+= true
+
+>
+
+\App\Models\Project::count()
+> \App\Models\Task::count()
+> \App\Models\Task::query()->paginate(5)->all()
