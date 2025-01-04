@@ -16,7 +16,7 @@ export default function Create({auth}){
         image: '',
         name : "", 
         status : '', 
-        dscription : '', 
+        description : '', 
         due_date : '', 
 
     })

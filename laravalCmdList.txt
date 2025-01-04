@@ -35,7 +35,53 @@ composer require laravel/breeze --dev
 php artisan breeze:install
 
 php .\artisan make:model Project -fm 
+
+---------
+php artisan db:seed # that run 'run' method from DatabaseSeeder.php
+
+--- OR ---
 php .\artisan migrate:refresh --seed #dropping all the tables from the database  
 php .\artisan migrate --seed  #seeding
 
+---------
+
 php .\artisan make:controller ProjectController --requests --resource --model=Project
+
+composer create-project laravel/laravel laravel-note-pad
+
+npm uninstall vite
+
+npm install vite@^5
+
+php artison config:publish
+
+# creating factory 
+
+php .\artisan make:factory NoteFactory --model=Note
+
+# create blade view template
+
+-resources 
+	|---views
+		|---note
+			|---index.blade.php
+
+
+ php .\artisan make:view note.index
+  php .\artisan make:view note.edit
+   php .\artisan make:view note.show
+    php .\artisan make:view note.create
+
+
+# css and js config for vite sever for production
+# I need to build asset files css and js
+
+npm run build  # production ready # serve from public/build/assets
+npm run dev  # development ready # serve from vite server # resources/css/app.css # resources/js/app.js
+public > build > assets  
+
+# downgrading to fix vite error
+
+npm uninstall vite
+
+npm install vite@^5

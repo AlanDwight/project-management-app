@@ -13,7 +13,7 @@ export default forwardRef(function TextInput(
     useEffect(() => {
         if (isFocused) {
             localRef.current?.focus();
-        }
+        }   
     }, [isFocused]);
 
     return (

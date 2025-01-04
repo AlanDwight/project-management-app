@@ -38,7 +38,7 @@ export default function Edit({auth, project}){
             }
 
         >
-        <Head title="Projects" />
+        <Head title="Projects (Edit)" />
 
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
